@@ -39,11 +39,17 @@ onMounted(() => {
                                 <span class="aa-SourceHeaderLine"></span>
                             `;
                         },
-                        item({item, html}) {
+                        item({item, html, components}) {
                             return html`
                                 <a class="flex items-center space-x-2" href="${item.url}">
                                     <img src="${item.avatar_url}" class="w-8 h-8 rounded-full"/>
-                                    <span>${item.name}</span>
+                                    <span>
+                                        ${components.Highlight({
+                                            hit: item,
+                                            attribute: 'name',
+                                            tagName: 'em',
+                                        })}
+                                    </span>
                                 </a>
                             `;
                         }
@@ -72,10 +78,16 @@ onMounted(() => {
                                 <span class="aa-SourceHeaderLine"></span>
                             `;
                         },
-                        item({item, html}) {
+                        item({item, html, components}) {
                             return html`
                                 <a class="flex items-center space-x-2" href="${item.url}">
-                                    <span>${item.title}</span>
+                                    <span>
+                                       ${components.Highlight({
+                                           hit: item,
+                                           attribute: 'title',
+                                           tagName: 'em',
+                                       })}
+                                    </span>
                                 </a>
                             `;
                         }

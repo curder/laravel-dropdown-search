@@ -38,7 +38,7 @@ onMounted(() => {
                         },
                         item({item, html}) {
                             return html`
-                                <a class="flex items-center space-x-2" href="">
+                                <a class="flex items-center space-x-2" href="${item.url}">
                                     <img src="${item.avatar_url}" class="w-8 h-8 rounded-full"/>
                                     <span>${item.name}</span>
                                 </a>
@@ -68,7 +68,7 @@ onMounted(() => {
                         },
                         item({item, html}) {
                             return html`
-                                <a class="flex items-center space-x-2" href="">
+                                <a class="flex items-center space-x-2" href="${item.url}">
                                     <span>${item.title}</span>
                                 </a>
                             `;

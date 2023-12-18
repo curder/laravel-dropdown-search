@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
+
 use function urlencode;
 
 class User extends Authenticatable
@@ -45,9 +47,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function url(): Attribute
+    {
+        return Attribute::get(fn () => route('users.show', $this));
+    }
+
     public function avatarUrl(): string
     {
-        return 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . urlencode($this->name);
+        return 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name='.urlencode($this->name);
     }
 
     public function toSearchableArray(): array
@@ -55,6 +62,7 @@ class User extends Authenticatable
         return [
             'id' => (int) $this->id,
             'name' => $this->name,
+            'url' => $this->url,
             'avatar_url' => $this->avatarUrl(),
         ];
     }

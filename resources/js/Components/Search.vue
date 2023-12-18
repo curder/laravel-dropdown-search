@@ -30,16 +30,51 @@ onMounted(() => {
                         })
                     },
                     templates: {
+                        header({html}) {
+                            return html`
+                                <span class="aa-SourceHeaderTitle">用户</span>
+                                <span class="aa-SourceHeaderLine"></span>
+                            `;
+                        },
                         item({item, html}) {
                             return html`
-                              <a class="flex items-center space-x-2" href="">
-                                <img src="${item.avatar_url}" class="w-8 h-8 rounded-full" />
-                                <span>${item.name}</span>
-                              </a>
+                                <a class="flex items-center space-x-2" href="">
+                                    <img src="${item.avatar_url}" class="w-8 h-8 rounded-full"/>
+                                    <span>${item.name}</span>
+                                </a>
                             `;
                         }
                     }
-                }
+                },
+                {
+                    sourceId: 'courses',
+                    getItems({query}) {
+                        return getMeilisearchResults({
+                            searchClient,
+                            queries: [
+                                {
+                                    indexName: 'courses',
+                                    query,
+                                }
+                            ]
+                        })
+                    },
+                    templates: {
+                        header({html}) {
+                            return html`
+                                <span class="aa-SourceHeaderTitle">课程</span>
+                                <span class="aa-SourceHeaderLine"></span>
+                            `;
+                        },
+                        item({item, html}) {
+                            return html`
+                                <a class="flex items-center space-x-2" href="">
+                                    <span>${item.title}</span>
+                                </a>
+                            `;
+                        }
+                    }
+                },
             ];
         },
     })

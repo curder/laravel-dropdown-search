@@ -2,11 +2,24 @@
 import {autocomplete} from "@algolia/autocomplete-js";
 import {onMounted} from "vue";
 import {getMeilisearchResults, meilisearchAutocompleteClient} from "@meilisearch/autocomplete-client";
+import {createLocalStorageRecentSearchesPlugin} from "@algolia/autocomplete-plugin-recent-searches";
 
 const searchClient = new meilisearchAutocompleteClient({
     url: 'http://127.0.0.1:7700',
     apiKey: '',
 })
+const createSearchesPlugin = createLocalStorageRecentSearchesPlugin({
+    key: 'RECENT_SEARCHES',
+    limit: 5,
+    transformSource({source}) {
+        return {
+            ...source,
+            onSelect({setIsOpen}) {
+                setIsOpen(true)
+            }
+        }
+    },
+});
 
 onMounted(() => {
 
@@ -14,6 +27,8 @@ onMounted(() => {
         container: "#search",
         placeholder: "您向要搜索什么?",
         autoFocus: true,
+        autoComplete: true,
+        plugins: [createSearchesPlugin,],
         getSources() {
             return [
                 {

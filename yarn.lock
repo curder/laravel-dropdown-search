@@ -10,7 +10,7 @@
     "@algolia/autocomplete-plugin-algolia-insights" "1.12.2"
     "@algolia/autocomplete-shared" "1.12.2"
 
-"@algolia/autocomplete-js@^1.12.2":
+"@algolia/autocomplete-js@1.12.2", "@algolia/autocomplete-js@^1.12.2":
   version "1.12.2"
   resolved "https://registry.npmmirror.com/@algolia/autocomplete-js/-/autocomplete-js-1.12.2.tgz#53e6564cc8a806121d2da59bc6ad869045e37e74"
   integrity sha512-urCborbT4qJHZJ8atCe1YNicWQ0rJPRK6KWoufmukqZV0ktxXcRlJCstRV9j/8CqxOheB/eDWo/Rm3v9nXSJLg==
@@ -26,6 +26,16 @@
   resolved "https://registry.npmmirror.com/@algolia/autocomplete-plugin-algolia-insights/-/autocomplete-plugin-algolia-insights-1.12.2.tgz#8d1d85f9c3f26de30fc6ece20713be849602eadf"
   integrity sha512-jPlBXFZs3ukUl5bn27kF3D6JHsWwK9g2bcjIeFBld2UaZnH6ec8tcldVeYbUy6QzDevmFyTohzhb1j6MtSZBrQ==
   dependencies:
+    "@algolia/autocomplete-shared" "1.12.2"
+
+"@algolia/autocomplete-plugin-recent-searches@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.npmmirror.com/@algolia/autocomplete-plugin-recent-searches/-/autocomplete-plugin-recent-searches-1.12.2.tgz#fd5ec05a14efc4a972893788e4e3e79dd1b72ccc"
+  integrity sha512-7rZCkFT1ZPph30LUAlwHlIezmil/79162v+qy/m7UG8fPDqc7Dj1dtqkLd0J6Fo8wwZt+2OjxN1Mi5ybqEghEA==
+  dependencies:
+    "@algolia/autocomplete-core" "1.12.2"
+    "@algolia/autocomplete-js" "1.12.2"
+    "@algolia/autocomplete-preset-algolia" "1.12.2"
     "@algolia/autocomplete-shared" "1.12.2"
 
 "@algolia/autocomplete-preset-algolia@1.12.2":

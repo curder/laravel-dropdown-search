@@ -1,5 +1,7 @@
 # Laravel dropdown search
 
+https://github.com/curder/laravel-dropdown-search/assets/8327004/a992ce24-348c-4d48-8a4a-6d617233798a
+
 ## 初始化项目
 
 ```bash

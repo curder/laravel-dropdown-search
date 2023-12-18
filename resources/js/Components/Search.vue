@@ -26,10 +26,14 @@ onMounted(() => {
         container: "#search",
         placeholder: "您想要搜索什么?",
         initialState: {
-            query: new URL(window.location).searchParams.get('search')
+            query: new URL(window.location).searchParams.get('q')
         },
         autoFocus: true,
+        openOnFocus: true,
         autoComplete: true,
+        onSubmit({navigator, state}) {
+            navigator.navigate({itemUrl: `/search?q=${state.query}`})
+        },
         plugins: [createSearchesPlugin,],
         getSources() {
             return [

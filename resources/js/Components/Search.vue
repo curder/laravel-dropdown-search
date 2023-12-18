@@ -1,9 +1,10 @@
 <script setup>
 import {autocomplete} from "@algolia/autocomplete-js";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import {getMeilisearchResults, meilisearchAutocompleteClient} from "@meilisearch/autocomplete-client";
 import {createLocalStorageRecentSearchesPlugin} from "@algolia/autocomplete-plugin-recent-searches";
 
+const searchContainer = ref()
 const searchClient = new meilisearchAutocompleteClient({
     url: 'http://127.0.0.1:7700',
     apiKey: '',
@@ -20,10 +21,9 @@ const createSearchesPlugin = createLocalStorageRecentSearchesPlugin({
         }
     },
 });
-
 onMounted(() => {
     autocomplete({
-        container: "#search",
+        container: searchContainer.value,
         placeholder: "您想要搜索什么?",
         initialState: {
             query: new URL(window.location).searchParams.get('q')
@@ -121,5 +121,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="search"></div>
+    <div ref="searchContainer"></div>
 </template>

@@ -22,10 +22,12 @@ const createSearchesPlugin = createLocalStorageRecentSearchesPlugin({
 });
 
 onMounted(() => {
-
     autocomplete({
         container: "#search",
-        placeholder: "您向要搜索什么?",
+        placeholder: "您想要搜索什么?",
+        initialState: {
+            query: new URL(window.location).searchParams.get('search')
+        },
         autoFocus: true,
         autoComplete: true,
         plugins: [createSearchesPlugin,],
